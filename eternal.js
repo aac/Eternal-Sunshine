@@ -69,6 +69,25 @@ function getFriendOnChat(element)
 {
     return element.find(getFriendOnChatSelector());
 }
+
+var frequentFriendOnChatSelector = "";
+function getFrequentFriendOnChatSelector()
+{
+    if (frequentFriendOnChatSelector == "")
+    {
+	frequentFriendOnChatSelector = jQuery(hiddenIds).map(function(e) {
+	    return '#chatFriendsOnline img[src*=_'+this.toString()+'_]';
+	}).get().join(",");
+    }
+    return frequentFriendOnChatSelector;
+}
+function getFrequentFriendOnChat(element)
+{
+    return element.find(getFrequentFriendOnChatSelector()).parents("li");
+}
+
+
+
 /*
 
 var profileUpdateSelector = "";
@@ -100,7 +119,9 @@ var selectorPairs = [
     {selector: getProfileFriend,
     },
     {selector: getFriendOnChat,
-    }
+    },
+    {selector: getFrequentFriendOnChat,
+    },
 ];
 
 jQuery(document).bind('DOMNodeInserted', function(event) {
@@ -117,12 +138,6 @@ jQuery(hiddenIds).each(function() {
     //can use multiple selectors (separated by ',')
     var id = this.toString();
 
-    //remove from frequent chat list
-    var fcSelector = '#chatFriendsOnline img[src*=_'+id+'_]';
-    var fcItems = jQuery(fcSelector);
-    fcItems.each(function(){
-	filter(jQuery(this).parent().parent());
-    });
     //remove from friends' photos (on Friends page)
     /*
     var fpSelector = ".ego_section i[style*="+id+"_]";
