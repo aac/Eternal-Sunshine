@@ -5,6 +5,13 @@ jQuery(document).ready(function(){
         localStorage.hiddenFriends = JSON.stringify([]);
 
     hiddenFriends = JSON.parse(localStorage.hiddenFriends);
+
+    chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+	if (request.action == "getHiddenFriends")
+	    sendResponse({hiddenFriends: getHiddenFriends()})
+	else
+	    sendResponse({}); // snub them.
+    });
 });
 
 function addHiddenFriend(id)
@@ -17,3 +24,4 @@ function getHiddenFriends()
 {
     return hiddenFriends;
 }
+
