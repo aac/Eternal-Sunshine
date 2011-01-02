@@ -37,7 +37,7 @@ function getProfilePhotoUpdate(element)
     return element.find(getProfilePhotoUpdateSelector()).parents("li");
 }
 
-var profileFriendSelector = ""
+var profileFriendSelector = "";
 function getProfileFriendSelector()
 {
     if (profileFriendSelector == "")
@@ -52,6 +52,22 @@ function getProfileFriend(element)
 {
     //remove from profile friends list
     return element.find(getProfileFriendSelector()).parents("li");
+}
+
+var friendOnChatSelector = "";
+function getFriendOnChatSelector()
+{
+    if (friendOnChatSelector == "")
+    {
+	friendOnChatSelector = jQuery(hiddenIds).map(function(e) {
+	    return 'a[id*=buddy_list_item_'+this.toString()+']';
+	}).get().join(",");
+    }
+    return friendOnChatSelector;
+}
+function getFriendOnChat(element)
+{
+    return element.find(getFriendOnChatSelector());
 }
 /*
 
@@ -83,6 +99,8 @@ var selectorPairs = [
     },
     {selector: getProfileFriend,
     },
+    {selector: getFriendOnChat,
+    }
 ];
 
 jQuery(document).bind('DOMNodeInserted', function(event) {
@@ -98,39 +116,7 @@ jQuery(hiddenIds).each(function() {
     //TODO: don't have to loop over ids.
     //can use multiple selectors (separated by ',')
     var id = this.toString();
-    
-    //remove from stream
-    /*
-    var streamItems = jQuery(".uiStreamStory[data-ft]");
-    streamItems.each(function() {
-	var data = jQuery.parseJSON(jQuery(this).attr("data-ft"));
-	if (data != null && data.actrs == id)
-	    filter(jQuery(this));
-    });
-    */
 
-    //remove from profile photo updates
-    /*
-    var ppSelector = '#pagelet_friends_recentlyupdated .phs:first img[src*=_'+id+'_]';
-    var ppItems = jQuery(ppSelector);
-    ppItems.each(function(){
-	filter(jQuery(this).parent().parent().parent().parent().parent());
-    });
-    */
-
-    //remove from profile updates
-    /*
-    var puItems = jQuery('ul.uiList.friendsDashboard img[src*=_'+id+'_]');
-    puItems.each(function(){
-	filter(jQuery(this).parent().parent().parent());
-    });
-    */
-
-    //remove from chatlist
-    var chatItems = jQuery("a[id*=buddy_list_item_"+id+"]");
-    chatItems.each(function(){
-	filter(jQuery(this));
-    });
     //remove from frequent chat list
     var fcSelector = '#chatFriendsOnline img[src*=_'+id+'_]';
     var fcItems = jQuery(fcSelector);
