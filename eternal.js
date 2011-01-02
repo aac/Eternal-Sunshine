@@ -87,6 +87,21 @@ function getFrequentFriendOnChat(element)
 }
 
 
+var friendsPhotoAlbumsSelector = "";
+function getFriendsPhotoAlbumsSelector()
+{
+    if (friendsPhotoAlbumsSelector == "")
+    {
+	friendsPhotoAlbumsSelector = jQuery(hiddenIds).map(function(e) {
+	    return ".ego_section i[style*="+this.toString()+"_]";
+	}).get().join(",");
+    }
+    return friendsPhotoAlbumsSelector;
+}
+function getFriendsPhotoAlbums(element)
+{
+    return element.find(getFriendsPhotoAlbumsSelector()).parents("div.ego_unit");
+}
 
 /*
 
@@ -121,6 +136,8 @@ var selectorPairs = [
     {selector: getFriendOnChat,
     },
     {selector: getFrequentFriendOnChat,
+    },
+    {selector: getFriendsPhotoAlbums,
     },
 ];
 
