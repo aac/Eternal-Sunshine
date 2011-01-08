@@ -15,8 +15,8 @@ function getStreamItem(element)
     if (!element.is(".uiStreamStory[data-ft]"))
 	return [];
     var data = jQuery.parseJSON(element.attr("data-ft"));
-    if (data != null && jQuery.inArray(data.actrs, hiddenIds) == 1)
-	return streamItemNode(element);
+    if (data != null && jQuery.inArray(data.actrs, hiddenIds) > -1)
+	return jQuery(element);
     return [];
 }
 
