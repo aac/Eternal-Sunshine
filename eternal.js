@@ -150,20 +150,3 @@ jQuery(document).bind('DOMNodeInserted', function(event) {
     });
 });
 
-jQuery(hiddenIds).each(function() {
-    //TODO: don't have to loop over ids.
-    //can use multiple selectors (separated by ',')
-    var id = this.toString();
-
-    //remove from friends' photos (on Friends page)
-    /*
-    var fpSelector = ".ego_section i[style*="+id+"_]";
-    filter(jQuery(fpSelector).parent().parent().parent().parent().parent().parent());
-    */
-    //remove from find more friends;
-    /*
-      var fmfSelector = '.uiFacepileItem > img[src~="_' + id + '_"]';
-      var fmfItems = jQuery(fmfSelector);
-      fmfItems.each(function() {jQuery(this).hide()});
-    */	
-});
