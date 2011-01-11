@@ -2,12 +2,67 @@
   <head>
     <script src="jquery-1.4.4.min.js"></script>
     <script src="popup.js"></script>
+    <style type="text/css">
+      body {width: 300px; padding: 0; margin: 0; font-family: 'lucida grande', tahoma, verdana, arial, sans-serif; font-size: 11px;}
+      div,h2, h3 {margin:0; padding: 0;}
+      #blueBar {background-color: #3B5998;height: 41px; border-top-left-radius: 4px; border-top-right-radius: 4px;}
+      #headNav {
+      background-color: #627AAD;
+      border: 1px solid #1D4088;
+      border-bottom: 0px;
+      height: 30px;
+      margin-left: 20px;
+      }
+      #pageHead {padding-top: 10px; width: 260px;}
+      #content {
+      margin-left: 20px;
+      padding-top:15px;
+      padding-left: 20px; 
+      padding-bottom: 6px;
+      border-left: 1px solid #B3B3B3;
+      border-bottom: 1px solid #B3B3B3;
+      border-right: 1px solid #B3B3B3;
+      width: 218px;
+      }
+      #hide_friend_form {margin: 4px 0 0 4px;}
+      .placeholder {color: #777;}
+      #blocked_friends {
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      }
+      .blocked_friend {
+      padding: 4px 0;
+      }
+      #header {margin-bottom: 6px;}
+      #footerContainer {
+      border-top: 1px solid #EEE;
+      margin-bottom: 30px;
+      padding: 8px;
+      line-height: 14px;
+      color: gray;
+      font-size: 11px;
+      width: 218px;
+      margin-left: 20px;
+      }
+    </style>
   </head>
   <body>
-    <form id="hide_friend_form">
-      <span><label for="name">Friend:</label><input type="text" name="name" id="id"/></span>
-      <h3>Blocked Friends:</h3>
+    <div id="blueBar" />
+    <div id="pageHead">
+      <div id="headNav">
+	<form id="hide_friend_form">
+	  <input type="text" class="placeholder" name="name" id="id" value="Hide"/>
+	</form>
+      </div>
+    </div><div id="content">
+      <h2 id="header">Blocked Friends</h2>
       <ul id="blocked_friends" />
-    </form>
+    </div>
+    <div id="footerContainer">
+      Eternal Sunshine
+    </div>
   </body>
+
+
 </html>
