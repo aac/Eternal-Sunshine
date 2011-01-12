@@ -27,4 +27,19 @@ jQuery(document).ready(function(){
 	backgroundPage.addHiddenFriend(val);
         jQuery("#hidden_friends").append(createListItem(val));
     });
+
+    jQuery("#id").focus(function(){
+	if (jQuery(this).val() == "Hide")
+	{
+	    jQuery(this).val("");
+	    jQuery(this).removeClass("placeholder");
+	}
+    })
+    jQuery("#id").focusout(function(){
+	if (jQuery(this).val() == "")
+	{
+	    jQuery(this).val("Hide");
+	    jQuery(this).addClass("placeholder");
+	}
+    });
 });
