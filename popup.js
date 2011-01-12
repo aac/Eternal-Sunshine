@@ -34,6 +34,8 @@ jQuery(document).ready(function(){
 	var val = jQuery("#id").val();
 	backgroundPage.addHiddenFriend(val);
         jQuery("#hidden_friends").append(createListItem(val));
+	jQuery("#id").val("");
+	jQuery("#id").focusout();
     });
 
     jQuery("#id").focus(function(){
