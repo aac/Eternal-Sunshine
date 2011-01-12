@@ -3,7 +3,11 @@ var backgroundPage;
 function createListItem(v)
 {
     var li = document.createElement("li");
+    var a = document.createElement("a");
+    jQuery(a).attr("src", "hide_button.png");
+    jQuery(a).addClass("uiCloseButton");
     li.innerHTML = v;
+    jQuery(li).prepend(a);
     jQuery(li).attr("class", "hidden_friend");
     return li;
 }
