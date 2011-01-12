@@ -1,30 +1,49 @@
 var backgroundPage;
+var numHiddenFriends=0;
 
-function createListItem(v)
+function createListItem(friend)
 {
     var li = document.createElement("li");
     var a = document.createElement("a");
     jQuery(a).attr("src", "hide_button.png");
     jQuery(a).addClass("uiCloseButton");
     jQuery(a).click(function() {
-	backgroundPage.removeHiddenFriend(v);
+	backgroundPage.removeHiddenFriend(friend.id);
 	jQuery(li).remove();
+	numHiddenFriends--;
+	updateCount();
     });
-    li.innerHTML = v;
+    li.innerHTML = friend.name;
+    jQuery(li).data('uid', friend.id);
     jQuery(li).prepend(a);
     jQuery(li).attr("class", "hidden_friend");
     return li;
 }
 
+function updateCount()
+{
+    jQuery("#count").html("You have hidden " + numHiddenFriends + " friend" + (numHiddenFriends == 1 ? "" : "s") + ".");
+}
+
+function addHiddenFriend(friend)
+{
+    jQuery("#hidden_friends").append(createListItem(friend));
+    numHiddenFriends++;
+    updateCount();
+}
+
 function buildList(hiddenFriends)
 {
-    jQuery("#hidden_friends").append(hiddenFriends.map(function(v){
-        return createListItem(v);
+    jQuery("#hidden_friends").append(hiddenFriends.map(function(friend){
+        return createListItem(friend);
     }));
+    numHiddenFriends=hiddenFriends.length;
+    updateCount();
 }
 
 jQuery(document).ready(function(){
     backgroundPage = chrome.extension.getBackgroundPage();
+    backgroundPage.setPopup(self);
     buildList(backgroundPage.getHiddenFriends());
     var form = jQuery("#hide_friend_form");
     //var img = document.create("img");
@@ -33,7 +52,7 @@ jQuery(document).ready(function(){
 	event.preventDefault();
 	var val = jQuery("#id").val();
 	backgroundPage.addHiddenFriend(val);
-        jQuery("#hidden_friends").append(createListItem(val));
+        //jQuery("#hidden_friends").append(createListItem(val));
 	jQuery("#id").val("");
 	jQuery("#id").focusout();
     });
@@ -51,5 +70,9 @@ jQuery(document).ready(function(){
 	    jQuery(this).val("Hide");
 	    jQuery(this).addClass("placeholder");
 	}
+    });
+    jQuery("#count").click(function(event){
+	event.preventDefault();
+	jQuery("#hidden_friends").toggle();
     });
 });

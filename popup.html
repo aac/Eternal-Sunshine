@@ -30,6 +30,7 @@
       list-style-type: none;
       margin: 0px;
       padding: 0px;
+      display: none;
       }
       .hidden_friend {
       padding: 4px 0;
@@ -55,6 +56,17 @@
       }
       .uiCloseButton:hover { background-position:0px -30px; }
       .uiCloseButton:active{ background-position:0px -45px; }
+      #countContainer {
+      margin-top: 4px;
+      margin-bottom: 6px;
+      }
+      #count {
+        color: #6D84B4;
+        text-decoration: none;
+      }
+      #count:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -67,6 +79,7 @@
       </div>
     </div><div id="content">
       <h2 id="header">Hidden Friends</h2>
+      <div id="countContainer"><a id="count" href="#"></a></div>
       <ul id="hidden_friends" />
     </div>
     <div id="footerContainer">

@@ -1,3 +1,4 @@
+var popup;
 var hiddenFriends;
 
 jQuery(document).ready(function(){
@@ -16,14 +17,23 @@ jQuery(document).ready(function(){
 
 function addHiddenFriend(id)
 {
-    hiddenFriends.push(id);
-    storeFriends();
+    var details = {};
+    jQuery.getJSON("http://graph.facebook.com/"+id, function(data){
+	debugger;
+	details["id"] = data.id;
+	details["name"]= data.name;
+	details["slug"]= data.link.substring(data.link.lastIndexOf("/")+1);
+
+	hiddenFriends.push(details);
+	storeFriends();
+	popup.addHiddenFriend(details);
+    });
 }
 
 function removeHiddenFriend(id)
 {
     hiddenFriends=jQuery.grep(hiddenFriends, function(element, index){
-	return element != id;
+	return element.id != id;
     });
     storeFriends();
 }
@@ -36,4 +46,9 @@ function getHiddenFriends()
 function storeFriends()
 {
     localStorage.hiddenFriends=JSON.stringify(hiddenFriends);
+}
+
+function setPopup(p)
+{
+    popup = p;
 }
