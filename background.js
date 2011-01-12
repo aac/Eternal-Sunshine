@@ -17,7 +17,15 @@ jQuery(document).ready(function(){
 function addHiddenFriend(id)
 {
     hiddenFriends.push(id);
-    localStorage.hiddenFriends=JSON.stringify(hiddenFriends);
+    storeFriends();
+}
+
+function removeHiddenFriend(id)
+{
+    hiddenFriends=jQuery.grep(hiddenFriends, function(element, index){
+	return element != id;
+    });
+    storeFriends();
 }
 
 function getHiddenFriends()
@@ -25,3 +33,7 @@ function getHiddenFriends()
     return hiddenFriends;
 }
 
+function storeFriends()
+{
+    localStorage.hiddenFriends=JSON.stringify(hiddenFriends);
+}
