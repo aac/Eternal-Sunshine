@@ -4,13 +4,13 @@ function createListItem(v)
 {
     var li = document.createElement("li");
     li.innerHTML = v;
-    jQuery(li).attr("class", "blocked_friend");
+    jQuery(li).attr("class", "hidden_friend");
     return li;
 }
 
 function buildList(hiddenFriends)
 {
-    jQuery("#blocked_friends").append(hiddenFriends.map(function(v){
+    jQuery("#hidden_friends").append(hiddenFriends.map(function(v){
         return createListItem(v);
     }));
 }
@@ -25,6 +25,6 @@ jQuery(document).ready(function(){
 	event.preventDefault();
 	var val = jQuery("#id").val();
 	backgroundPage.addHiddenFriend(val);
-        jQuery("#blocked_friends").append(createListItem(val));
+        jQuery("#hidden_friends").append(createListItem(val));
     });
 });
