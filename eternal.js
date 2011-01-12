@@ -6,7 +6,7 @@ function filter(element)
     //element.bgColor='red';
 }
 
-chrome.extension.sendRequest({action: "getHiddenFriends"}, function(response) {
+chrome.extension.sendRequest({action: "getHiddenFriendIds"}, function(response) {
     hiddenIds = response.hiddenFriends;
 });
 
