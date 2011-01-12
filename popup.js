@@ -6,6 +6,10 @@ function createListItem(v)
     var a = document.createElement("a");
     jQuery(a).attr("src", "hide_button.png");
     jQuery(a).addClass("uiCloseButton");
+    jQuery(a).click(function() {
+	backgroundPage.removeHiddenFriend(v);
+	jQuery(li).remove();
+    });
     li.innerHTML = v;
     jQuery(li).prepend(a);
     jQuery(li).attr("class", "hidden_friend");
