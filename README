@@ -7,6 +7,9 @@ extension hides content on Facebook pages pertaining to hidden users, as
 specified by the browser's user.  The extension does not remove Facebook 
 friendships or modify the user's Facebook data in any way.  
 
+The name is a reference to the movie Eternal Sunshine of the Spotless Mind,
+http://www.imdb.com/title/tt0338013/
+
 The source code for Eternal Sunshine is distributed under the MIT License, 
 as described in the LICENSE file.  
 
