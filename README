@@ -1,11 +1,29 @@
-/*
-  TODO:
-  -- Friends Photos (tagged.  not the whole album)
-  ---- Based on tags.  Links don't necessarily contain user id.  might contain username.
+Eternal Sunshine for Chrome
 
-  -- Drop down on stream items
-  ---- Add option to eternal hide someone
+Created by Andrew A. Cove
 
-  -- News stream messages (different from stories)
+Eternal Sunshine is an extension for the Google Chrome web browser.  The 
+extension hides content on Facebook pages pertaining to hidden users, as 
+specified by the browser's user.  The extension does not remove Facebook 
+friendships or modify the user's Facebook data in any way.  
 
- */
+The source code for Eternal Sunshine is distributed under the MIT License, 
+as described in the LICENSE file.  
+
+The code is available for download from GitHub:
+
+http://github.com/andrewacove/Eternal-Sunshine
+
+==============================================
+
+Developer Notes
+
+Not yet implemented:
+-- Hidden user is tagged in someone else's photo
+-- Stream messages (single line text updates)
+-- Suggested friendships
+-- Questions (asked by or asked by friend of)
+
+To do:
+-- Drop down on news stream items for eternal hide
+-- Typeahead search for users
