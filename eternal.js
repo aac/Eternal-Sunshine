@@ -119,6 +119,23 @@ function getQuestions(element)
     return element.find(getQuestionsSelector()).parents("div.ego_unit");
 }
 
+var photosetsSelector = "";
+function getPhotosetsSelector()
+{
+    if (photosetsSelector == "")
+    {
+	photosetsSelector = jQuery(hiddenIds).map(function(e) {
+	    return "div[id^=pagelet_photoset_] a[href*='id=" + this.toString() +"']";
+	}).get().join(",");
+    }
+    return photosetsSelector;
+}
+function getPhotosets(element)
+{
+    return element.find(getPhotosetsSelector()).parents("div[id^=pagelet_photoset_]");
+}
+
+
 /*
 
 var profileUpdateSelector = "";
@@ -156,6 +173,8 @@ var selectorPairs = [
     {selector: getFriendsPhotoAlbums,
     },
     {selector: getQuestions,
+    },
+    {selector: getPhotosets,
     },
 ];
 
