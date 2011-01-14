@@ -103,6 +103,22 @@ function getFriendsPhotoAlbums(element)
     return element.find(getFriendsPhotoAlbumsSelector()).parents("div.ego_unit");
 }
 
+var questionsSelector = "";
+function getQuestionsSelector()
+{
+    if (questionsSelector == "")
+    {
+	questionsSelector = jQuery(hiddenIds).map(function(e) {
+	    return "a[data-hovercard*="+this.toString() + "]";
+	}).get().join(",");
+    }
+    return questionsSelector;
+}
+function getQuestions(element)
+{
+    return element.find(getQuestionsSelector()).parents("div.ego_unit");
+}
+
 /*
 
 var profileUpdateSelector = "";
@@ -138,6 +154,8 @@ var selectorPairs = [
     {selector: getFrequentFriendOnChat,
     },
     {selector: getFriendsPhotoAlbums,
+    },
+    {selector: getQuestions,
     },
 ];
 
