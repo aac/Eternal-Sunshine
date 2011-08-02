@@ -61,7 +61,7 @@ function getFriendOnChatSelector()
     {
 	friendOnChatSelector = jQuery(hiddenIds).map(function(e) {
 	    //return 'a[id*=buddy_list_item_'+this.toString()+']';
-		return 'img[src*=_'+this.toString()+'_]';
+		return 'img[src*=_'+this.toString()+'_].pic';
 	}).get().join(",");
     }
     return friendOnChatSelector;
