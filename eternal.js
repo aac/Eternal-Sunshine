@@ -60,14 +60,15 @@ function getFriendOnChatSelector()
     if (friendOnChatSelector == "")
     {
 	friendOnChatSelector = jQuery(hiddenIds).map(function(e) {
-	    return 'a[id*=buddy_list_item_'+this.toString()+']';
+	    //return 'a[id*=buddy_list_item_'+this.toString()+']';
+		return 'img[src*=_'+this.toString()+'_]';
 	}).get().join(",");
     }
     return friendOnChatSelector;
 }
 function getFriendOnChat(element)
 {
-    return element.find(getFriendOnChatSelector());
+    return element.find(getFriendOnChatSelector()).parents("li");
 }
 
 var frequentFriendOnChatSelector = "";
@@ -186,4 +187,3 @@ jQuery(document).bind('DOMNodeInserted', function(event) {
 	});
     });
 });
-
