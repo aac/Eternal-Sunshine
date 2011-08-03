@@ -9,7 +9,7 @@
     "background_page": "background.html",
     "content_scripts": [
 	{
-	    "matches": ["http://www.facebook.com/*"],
+	    "matches": ["http://www.facebook.com/*","https://www.facebook.com/*"],
 	    "js": ["jquery-1.4.4.min.js", "eternal.js"],	     
 	    "run_at": "document_start"
 	}
